@@ -1,0 +1,26 @@
+// Available variables which can be used inside of strings.
+// ${workspaceRoot}: the root folder of the team
+// ${file}: the current opened file
+// ${fileBasename}: the current opened file's basename
+// ${fileDirname}: the current opened file's dirname
+// ${fileExtname}: the current opened file's extension
+// ${cwd}: the current working directory of the spawned process
+
+// A task runner that calls g++ to compile Cpp file
+{
+    "version": "0.1.0",
+    "command": "g++",
+    "args": ["-Wall", "src/${fileBasename}", "-o", "${workspaceRoot}/bin/Debug/VulkanRenderer.bin", "-ggdb", "-std=c++11", "-l:libglfw.so.3.2", "-lvulkan", "-ldl", "-lpthread", "-lXrandr", "-lXi", "-lXcursor", "-lX11", "-lXxf86vm", "-lXinerama", "-DVK_USE_PLATFORM_XLIB_KHR"],
+    "problemMatcher": {
+        "owner": "cpp",
+        "fileLocation": ["relative", "${cwd}"],
+        "pattern": {
+            "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+            "file": 1,
+            "line": 2,
+            "column": 3,
+            "severity": 4,
+            "message": 5
+        }
+    }
+}
